@@ -80,5 +80,44 @@ public class Locators_techniques {
         // The above shows error because Selenium executes immediately but the text loads after 2 sec soo for that we can use
         // Thread.sleep ;0 (implicit wait)
 
+        //<a href="#">Forgot your password?</a>
+        // Use Link text Locator to handle links as above
+        // Make sure the tag should be anchor tag ;_
+        driver.findElement(By.linkText("Forgot your password?")).click();
+
+        /**
+         * To use Xpath :-
+         * //TagName[@attribute='value']
+         * //input@placeholder='Username
+         * */
+
+        //<input type="text" placeholder="Name">
+        driver.findElement(By.xpath("//input[@placeholder='Name']")).sendKeys("John");
+        // For validation in console use $x('//input[@placeholder="Name"]')
+
+        //<input type="text" placeholder="Email">
+        driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("john@sa.com");
+        driver.findElement(By.cssSelector("input[placeholder='Email']")).clear();
+
+        //<input type="text" placeholder="Name">
+        //<input type="text" placeholder="Email">
+        //<input type="text" placeholder="Phone Number">
+        //When we have multiple same tags then a unique way to select by xPath is ;-
+        //  for selecting "Email" -> //input[@type='text'][2]
+
+        driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("john@sa.com");
+        driver.findElement(By.xpath("//input[@type='text][2]")).clear();
+
+        //When we have multiple same tags then a unique way to select by cssSelector is ;-
+        //  for selecting "Email" -> input[type='text']:nth-child(2) ...<Most Appropriate>
+
+        driver.findElement(By.xpath("input[type='text']:nth-child(2)")).sendKeys("johnsa@gmail.com");
+
+
+
+
+
+
+
     }
 }
