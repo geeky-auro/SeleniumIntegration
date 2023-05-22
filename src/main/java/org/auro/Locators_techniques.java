@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 public class Locators_techniques {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException{
         System.out.println("Hello WOrld Welcome to Locators and Techniques ;)");
         //Locators used by Selenium
         /**
@@ -26,6 +26,7 @@ public class Locators_techniques {
 
         System.setProperty("webdriver.chrome.driver","C:\\chrome_driver\\chromedriver.exe");
         WebDriver driver=new ChromeDriver();
+        // We use Implicitwait becoz we need something to show while an even has occoured such as button click
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.get("https://rahulshettyacademy.com/locatorspractice/");
 
@@ -82,6 +83,10 @@ public class Locators_techniques {
         // Make sure the tag should be anchor tag ;_
         driver.findElement(By.linkText("Forgot your password?")).click();
 
+
+        // To wait for the Slider to slide in the single Web Page Application we make the program wait..@! <Explicit Wait>
+        Thread.sleep(2000);
+
         /**
          * To use Xpath :-
          * //TagName[@attribute='value']
@@ -108,7 +113,7 @@ public class Locators_techniques {
         //When we have multiple same tags then a unique way to select by cssSelector is ;-
         //  for selecting "Email" -> input[type='text']:nth-child(2) ...<Most Appropriate>
 
-        driver.findElement(By.cssSelector("input[type='text']:nth-child(2)")).sendKeys("johnsa@gmail.com");
+        driver.findElement(By.cssSelector("input[type='text']:nth-of-type(2)")).sendKeys("johnsa@gmail.com");
 
         // Traversing from parent to child via only tags (not using tag attributes) with the help of Xpath ;)
         /**
@@ -162,13 +167,47 @@ public class Locators_techniques {
 
         System.out.println(driver.findElement(By.cssSelector("form p")).getText());
 
+        // Switching back to login page
+        //<div class="forgot-pwd-btn-conainer">
+            // <button class="go-to-login-btn">Go to Login</button>
+            // <button class="reset-pwd-btn">Reset Login</button>
+        // </div>
 
+        // Customized X path for clickung Go to Login ---> //div[@class='forgot-pwd-btn-container']/button[1]
+        driver.findElement(By.xpath("//div[@class='forgot-pwd-btn-conainer']/button[1]")).click();
 
+        // Now it will change the Tilt view so apply wait ;0
+        Thread.sleep(1000);
 
+        driver.findElement(By.cssSelector("#inputUsername")).sendKeys("rahul");
+        // <input type="password" placeholder="Password" name="inputPassword" value="">
+        // By using Regex ;) Ex input[type*='pass']
+        driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys("rahulshettyacademy");
 
+        // Time to select the checkbox
+        //<input type="checkbox" id="chkboxOne" name="chkboxOne" value="rmbrUsername">
+        driver.findElement(By.id("chkboxOne")).click();
 
+        // Selecting Regex using X Path {Clicking Sign in Button}
+        //<button class="submit signInBtn" type="submit">Sign In</button>
+        // Equivalent regex Xpath is : //button[contains(@class,'submit')]
+        driver.findElement(By.xpath("//button[contains(@class,'submit')]")).click();
 
+        Thread.sleep(2000);
+        //<p style="color: rgb(27, 179, 102); font-size: 18px; text-align: center;">You are successfully logged in.</p>
 
+        if(driver.findElement(By.cssSelector("div[class='login-container'] p")).getText().equalsIgnoreCase("You are successfully logged in.")){
+            System.out.println("Worked Successfully");
+            // <button class="logout-btn" xpath="1">Log Out</button>
+            // Time to log out
+            driver.findElement(By.cssSelector(".logout-btn")).click();
+        }else{
+            System.out.println("Failed");
+        }
+        Thread.sleep(700);
+        driver.close();
 
     }
 }
+
+
