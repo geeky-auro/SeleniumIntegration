@@ -19,9 +19,6 @@ public class Locators_techniques {
          * Tag Name
          * Link Text
          * Partial Link Text
-         *
-         *
-         *
          * */
 
         // <input type="text" placeholder="Username" id="inputUsername" value="contact@rahulshettyacademy.com">
@@ -106,12 +103,65 @@ public class Locators_techniques {
         //  for selecting "Email" -> //input[@type='text'][2]
 
         driver.findElement(By.cssSelector("input[placeholder='Email']")).sendKeys("john@sa.com");
-        driver.findElement(By.xpath("//input[@type='text][2]")).clear();
+        driver.findElement(By.xpath("//input[@type='text'][2]")).clear();
 
         //When we have multiple same tags then a unique way to select by cssSelector is ;-
         //  for selecting "Email" -> input[type='text']:nth-child(2) ...<Most Appropriate>
 
-        driver.findElement(By.xpath("input[type='text']:nth-child(2)")).sendKeys("johnsa@gmail.com");
+        driver.findElement(By.cssSelector("input[type='text']:nth-child(2)")).sendKeys("johnsa@gmail.com");
+
+        // Traversing from parent to child via only tags (not using tag attributes) with the help of Xpath ;)
+        /**
+         * Ex:-
+         * <form action="#">
+         *     <h2>Forgot password</h2>
+         *     <input type="text" placeholder="Name">
+         *     <input type="text" placeholder="Email">
+         *     <input type="text" placeholder="Phone Number">
+         *     <br>
+         *         <div class="forgot-pwd-btn-conainer">
+         *         <button class="go-to-login-btn">Go to Login</button>
+         *         <button class="reset-pwd-btn">Reset Login</button>
+         *         </div>
+         *</form>
+         *
+         * Here Form is the parent and inputs are its child ..!
+         * We can traverse it from parent to child via XPath ;)
+         *  Syntax : //parentTagName/ChildTagName
+         *  Ex: //form/h2 ------> To reach to h2
+         *  Ex: //form/input[3] -------> To reach to input tag with attribute placeholder="Phone Number"
+         *  The above method purely focuses on tag name not by any of the attribute
+         * */
+//        driver.findElement(By.xpath("input[type='text']:nth-child(3)")).sendKeys("8249696287");
+        driver.findElement(By.xpath("//form/input[3]")).sendKeys("8249696287");
+
+        // <button class="reset-pwd-btn">Reset Login</button>
+        driver.findElement(By.cssSelector(".reset-pwd-btn")).click();
+
+        // parentTagName childTagName
+        /**
+         *
+         * Ex:
+         *          * <form action="#">
+         *          *     <h2>Forgot password</h2>
+         *          *     <p class="infoMsg">Please use temporary password 'rahulshettyacademy' to Login. </p>
+         *          *     <input type="text" placeholder="Name">
+         *          *     <input type="text" placeholder="Email">
+         *          *     <input type="text" placeholder="Phone Number">
+         *          *     <br>
+         *          *         <div class="forgot-pwd-btn-conainer">
+         *          *         <button class="go-to-login-btn">Go to Login</button>
+         *          *         <button class="reset-pwd-btn">Reset Login</button>
+         *          *         </div>
+         *          *</form>
+         *          *
+         *
+         *          To select p tag we can use the iterative method of Parent-to-Child type using CSS Selector
+         *          Syntax: parentTagName childTagName
+         * */
+
+        System.out.println(driver.findElement(By.cssSelector("form p")).getText());
+
 
 
 
