@@ -17,6 +17,7 @@ public class SauceDemo_InternTask  {
         // We use Implicitwait becoz we need something to show while an even has occoured such as button click
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.saucedemo.com/");
+        driver.manage().window().maximize();
 
 
         // Entering Username and Password ;)
@@ -42,7 +43,22 @@ public class SauceDemo_InternTask  {
         // Required Validation :- <Check whether all the items have been added in the cart or not ;)>
         driver.findElement(By.xpath("//a[@class='shopping_cart_link']")).click();
         System.out.println("Total No. of items in the Cart : "+driver.findElement(By.xpath("//span[@class='shopping_cart_badge']")).getText());
-
+        Thread.sleep(1000);
+        driver.findElement(By.xpath("//button[@id='checkout']")).click();
+        Thread.sleep(5000);
+        driver.findElement(By.xpath("(//input[@id='first-name'])[1]")).sendKeys("AURO SASWAT ");
+        driver.findElement(By.xpath("(//input[@id='last-name'])[1]")).sendKeys("RAJ");
+        driver.findElement(By.id("postal-code")).sendKeys("760010");
+        Thread.sleep(3000);
+        driver.findElement(By.id("continue")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//button[@id='finish']")).click();
+        // Validating the message ;)
+        Thread.sleep(3000);
+        System.out.println(driver.findElement(By.className("complete-header")).getText());
+        System.out.println(driver.findElement(By.xpath("//div[@class='complete-text']")).getText());
+        Thread.sleep(4000);
+        driver.quit();
     }
 
 }
