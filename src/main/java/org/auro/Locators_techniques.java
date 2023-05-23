@@ -179,7 +179,7 @@ public class Locators_techniques {
         // Now it will change the Tilt view so apply wait ;0
         Thread.sleep(1000);
 
-        driver.findElement(By.cssSelector("#inputUsername")).sendKeys("rahul");
+        driver.findElement(By.cssSelector("#inputUsername")).sendKeys("auro");
         // <input type="password" placeholder="Password" name="inputPassword" value="">
         // By using Regex ;) Ex input[type*='pass']
         driver.findElement(By.cssSelector("input[type*='pass']")).sendKeys("rahulshettyacademy");
