@@ -14,6 +14,11 @@ public class DynamicDropDown {
         driver.findElement(By.xpath("//a[@value='BLR']")).click();
         Thread.sleep(2000);
         // To dynamically select 2nd option we used index since MAA appeared in source and destination
-        driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
+//        driver.findElement(By.xpath("(//a[@value='MAA'])[2]")).click();
+        // Another way to handle the above problem "by not using indexes is " -> parentXpath childXpath
+        // //div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']
+        driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR']//a[@value='MAA']")).click();
+
+
     }
 }
