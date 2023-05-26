@@ -70,9 +70,9 @@ the page and performs the Action
 * //Tagname[@attribute=’value’]
 * //input[@placeholder=’ Username’’]
 <br>
-```
+~~~
 <input type="text" placeholder="Name"> 
-```
+~~~
 <br>
 * //input[@placeholder=’ Name’]
 * //Tagname[@attribute=’value’][index]
