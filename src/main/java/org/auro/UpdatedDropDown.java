@@ -16,7 +16,7 @@ public class UpdatedDropDown {
 //        If the below line fails then there is some problem that it true is passed  ;)
         Assert.assertFalse(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
         driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).click();
-        // CHeck whether Checkbox is Selected or not
+        // Check whether Checkbox is Selected or not
         System.out.println(driver.findElement(By.cssSelector("input[id*='SeniorCitizenDiscount']")).isSelected());
         // Count the no. of Checkboxes use the type attribute
 //        System.out.println(driver.findElements(By.cssSelector("input[type='checkbox']")).size());

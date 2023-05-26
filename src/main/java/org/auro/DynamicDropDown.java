@@ -3,6 +3,7 @@ package org.auro;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class DynamicDropDown {
     public static void main(String[] args) throws InterruptedException {
@@ -18,6 +19,17 @@ public class DynamicDropDown {
         // Another way to handle the above problem "by not using indexes is " -> parentXpath childXpath
         // //div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR'] //a[@value='MAA']
         driver.findElement(By.xpath("//div[@id='glsctl00_mainContent_ddl_destinationStation1_CTNR']//a[@value='MAA']")).click();
+
+        System.out.println(driver.findElement(By.id("Div1")).getAttribute("style"));
+        // Since its not round trip so We need a disabled return date ;)
+        if (driver.findElement(By.id("Div1")).getAttribute("style").contains("0.5")){
+            Assert.assertTrue(false);
+        }else {
+            Assert.assertTrue(true);
+        }
+
+
+
 
         /**
          *
