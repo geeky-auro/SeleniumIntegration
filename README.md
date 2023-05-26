@@ -2,7 +2,9 @@
 Introduction to Selenium and Webdrivers. How to run test cases in Google.
 Selenium is an open source umbrella project for a range of tools and libraries aimed at supporting browser automation. It provides a playback tool for authoring functional tests across most modern web browsers, without the need to learn a test scripting language.
 <br>
-Practise Site : https://rahulshettyacademy.com/locatorspractice/
+* Practise Site : https://rahulshettyacademy.com/locatorspractice/ <br>
+* Flight Booking Practise Website : https://rahulshettyacademy.com/dropdownsPractise/ <br>
+* Complete Automation Script for Flight Booking Website : https://github.com/geeky-auro/SeleniumIntegration/blob/master/src/main/java/org/auro/EndToEndTesting.java <br>
 
 ## 5 Step by Step Instructions to run first basic Selenium Program
 1. Install Java and Set Java Home Path in System variables
@@ -68,7 +70,9 @@ the page and performs the Action
 * //Tagname[@attribute=’value’]
 * //input[@placeholder=’ Username’’]
 <br>
-```<input type="text" placeholder="Name"> ```
+```
+<input type="text" placeholder="Name"> 
+```
 <br>
 * //input[@placeholder=’ Name’]
 * //Tagname[@attribute=’value’][index]
